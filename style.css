@@ -1,0 +1,100 @@
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --text: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, sans-serif;
+    color: var(--text);
+    background-color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevents side-scrolling on mobile */
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+/* Navigation */
+nav {
+    padding: 20px 0;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 800; font-size: 1.5rem; color: var(--dark); }
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+.btn-nav {
+    background: var(--primary);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+}
+
+/* Hamburger Styles */
+.hamburger { display: none; cursor: pointer; }
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Header */
+header { padding: 100px 0; text-align: center; background: white; }
+header h1 { font-size: 3.5rem; color: var(--dark); margin-bottom: 20px; line-height: 1.1; }
+header h1 span { color: var(--primary); }
+header p { font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px; }
+
+.btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+.btn.secondary { background: #e2e8f0; color: var(--dark); margin-left: 10px; }
+
+/* MOBILE RESPONSIVE LOGIC */
+@media screen and (max-width: 768px) {
+    header h1 { font-size: 2.5rem; }
+    
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transform: translateX(100%); /* Hides menu to the right */
+        transition: transform 0.5s ease-in;
+        padding-top: 50px;
+        border-top: 1px solid #eee;
+    }
+
+    .nav-links li { margin: 20px 0; font-size: 1.2rem; }
+
+    .hamburger { display: block; } /* Shows hamburger on mobile */
+
+    .nav-active { transform: translateX(0%); } /* Slides menu in */
+
+    /* Animation for the X icon */
+    .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+}

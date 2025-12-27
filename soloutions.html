@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problems & Solutions | LineByLine Digital</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --danger: #ef4444;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
+        nav { padding: 20px 0; background: white; border-bottom: 1px solid #e2e8f0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--dark); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; }
+
+        /* Header */
+        header { padding: 80px 0 40px; text-align: center; }
+        header h1 { font-size: 2.5rem; color: var(--dark); }
+        .subtitle { font-size: 1.2rem; color: #64748b; margin-top: 10px; }
+
+        /* Problem/Solution Section */
+        .grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+        
+        .box {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .problem-side { padding: 40px; border-right: 1px dashed #e2e8f0; background: #fff5f5; }
+        .solution-side { padding: 40px; background: #f0fdf4; }
+
+        .box h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .problem-side h3 { color: var(--danger); }
+        .solution-side h3 { color: var(--success); }
+
+        .icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+
+        /* Tech explanation */
+        .tech-deep-dive {
+            background: var(--dark);
+            color: white;
+            padding: 60px;
+            border-radius: 24px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        .tech-deep-dive h2 { color: var(--primary); margin-bottom: 20px; }
+        .tech-deep-dive code { background: #1e293b; padding: 5px 10px; border-radius: 5px; color: #60a5fa; }
+
+        .cta-section { text-align: center; padding-bottom: 80px; }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .box { grid-template-columns: 1fr; }
+            .problem-side { border-right: none; border-bottom: 1px dashed #e2e8f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">LineByLine<span>Digital</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Websites are broken.</h1>
+            <p class="subtitle">Most business owners are overpaying for slow, bloated sites. Here is how I fix that.</p>
+        </header>
+
+        <div class="grid">
+            <!-- Box 1: Speed -->
+            <div class="box">
+                <div class="problem-side">
+                    <span class="icon">🐌</span>
+                    <h3>The "Loading" Problem</h3>
+                    <p>Wix, WordPress, and Squarespace sites use "Drag-and-Drop" builders that add thousands of lines of unnecessary code (bloat). This makes sites slow and kills your Google ranking.</p>
+                </div>
+                <div class="solution-side">
+                    <span class="icon">⚡</span>
+                    <h3>The Hand-Coded Solution</h3>
+                    <p>I write every line of code myself. My sites have 90% less code, meaning they load instantly and Google loves them. <strong>No bloat. Ever.</strong></p>
+                </div>
+            </div>
+
+            <!-- Box 2: Management -->
+            <div class="box">
+                <div class="problem-side">
+                    <span class="icon">🤯</span>
+                    <h3>The "DIY" Headache</h3>
+                    <p>Most small business owners spend their weekends trying to fix a broken layout or update a plugin. Your time is worth more than that.</p>
+                </div>
+                <div class="solution-side">
+                    <span class="icon">🛠️</span>
+                    <h3>Fully Managed</h3>
+                    <p>You run your business; I run your site. Need a change? Just email me. Updates, security, and hosting are all included in your managed plan.</p>
+                </div>
+            </div>
+
+            <!-- Box 3: Cost -->
+            <div class="box">
+                <div class="problem-side">
+                    <span class="icon">💸</span>
+                    <h3>The Money Pit</h3>
+                    <p>Agencies charge $2,000+ upfront. Big builders charge $40/month. It adds up fast, especially when you have to do the work yourself.</p>
+                </div>
+                <div class="solution-side">
+                    <span class="icon">⚽</span>
+                    <h3>Fair & Direct</h3>
+                    <p>I charge $100 for the first year. My costs are low because I am a student-athlete funding my soccer season. You get agency-level code at a fraction of the price.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tech-deep-dive">
+            <h2>The Secret is in the Syntax</h2>
+            <p>While builders use <code>&lt;div&gt;</code> inside <code>&lt;div&gt;</code> inside <code>&lt;div&gt;</code>, I use clean, semantic HTML5. Your site is essentially a "Static" site—the fastest and most secure type of website on the planet.</p>
+            <br>
+            <p><strong>Result:</strong> 100/100 Google PageSpeed scores.</p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready for a better website?</h2>
+            <br>
+            <a href="mailto:dev.linebylinedigital@gmail.com" class="btn">Get Started Today</a>
+        </div>
+
+       <footer style="padding: 60px 0; background: #fff; border-top: 1px solid #e2e8f0; text-align: center;">
+    <div class="container">
+        <span class="logo">LineByLine<span>Digital</span></span>
+        <p style="margin: 15px 0;">Hand-coded with precision in Canberra, Australia.</p>
+        <p style="font-weight: bold; color: var(--primary);">dev.linebylinedigital@gmail.com</p>
+        <div style="margin-top: 20px; font-size: 0.8rem; color: #94a3b8;">
+            &copy; 2025 LineByLine Digital. All Rights Reserved. <br>
+            Supporting the next generation of NPL athletes.
+        </div>
+    </div>
+</footer>
+    </div>
+
+</body>
+</html>

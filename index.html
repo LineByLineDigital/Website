@@ -1,1 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineByLine Digital | Canberra Hand-Coded Web Specialist</title>
+    <style>
+        :root {
+            --primary: #2563eb; /* Original Professional Blue */
+            --secondary: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --white: #ffffff;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
+        nav { padding: 15px 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--dark); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger div { width: 25px; height: 3px; background: var(--dark); border-radius: 5px; }
+
+        /* Hero */
+        header { padding: 120px 0 80px; text-align: center; background: white; }
+        header h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--dark); line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
+        header h1 span { color: var(--primary); }
+        header p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 40px; color: #64748b; }
+        .btn { display: inline-block; padding: 16px 35px; background: var(--primary); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+
+        /* Solutions */
+        .solutions { padding: 100px 0; background: #fff; }
+        .solutions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .box { border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .prob { background: #fff5f5; padding: 40px; border-bottom: 1px dashed #fee2e2; }
+        .sol { background: #f0fdf4; padding: 40px; flex-grow: 1; }
+        .box h3 { margin-bottom: 10px; font-size: 1.4rem; }
+        .prob h3 { color: #dc2626; }
+        .sol h3 { color: #16a34a; }
+
+        /* Mission - Tigers FC Mentions with Blue Theme */
+        .mission { padding: 100px 0; background: var(--dark); color: white; border-radius: 40px; margin: 20px; }
+        .quest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .quest-box { background: #1e293b; padding: 40px; border-radius: 20px; border: 1px solid #334155; }
+        .quest-box h3 { color: var(--primary); margin-bottom: 15px; }
+        .quest-box.gold h3 { color: var(--secondary); }
+
+        /* Pricing */
+        .pricing { padding: 100px 0; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .p-card { background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; text-align: center; position: relative; }
+        .p-card.featured { border: 3px solid var(--primary); transform: translateY(-10px); }
+        .p-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
+        .p-amount { font-size: 3.5rem; font-weight: 900; color: var(--dark); margin: 20px 0; }
+        .p-amount span { font-size: 1rem; color: #94a3b8; font-weight: 400; }
+        .p-list { list-style: none; text-align: left; margin: 30px 0; }
+        .p-list li { margin-bottom: 12px; }
+        .p-list li::before { content: "⚽ "; }
+
+        /* On-Demand */
+        .on-demand { background: #f1f5f9; padding: 50px; border-radius: 24px; margin-top: 50px; text-align: center; }
+        .rate-grid { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .rate { background: white; padding: 30px; border-radius: 15px; width: 280px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .rate h4 { font-size: 2.5rem; color: var(--primary); font-weight: 800; }
+
+        footer { padding: 80px 0; background: #fff; border-top: 1px solid #e2e8f0; text-align: center; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { position: fixed; right: 0; top: 70px; height: 93vh; width: 100%; background: white; flex-direction: column; transform: translateX(100%); transition: 0.3s; padding-top: 50px; }
+            .nav-links.active { transform: translateX(0); }
+            .nav-links li { margin: 20px 0; }
+            .hamburger { display: flex; }
+            .solutions-grid, .quest-grid, .rate-grid { grid-template-columns: 1fr; }
+            .rate-grid { align-items: center; }
+            .p-card.featured { transform: none; }
+            .mission { margin: 10px; padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">LineByLine<span>Digital</span></a>
+            <ul class="nav-links" id="menu">
+                <li><a href="soloutions.html">Solutions</a></li>
+                <li><a href="about.html">The Quest</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="mailto:dev.linebylinedigital@gmail.com" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Contact</a></li>
+            </ul> 
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>No templates. No bloat.<br>Just <span>pure code</span>.</h1>
+            <p>Hand-coded lightning-fast websites for Canberra's small businesses. Built line-by-line for peak performance in the ACT.</p>
+            <div style="margin-top: 20px;">
+                <a href="pricing.html" class="btn">View My Plans</a>
+                <a href="about.html" class="btn" style="background:#e2e8f0; color:var(--dark); margin-left:10px;">My Mission</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="solutions" id="solutions">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem;">Manual Mode Web</h2>
+            <div class="solutions-grid">
+                <div class="box">
+                    <div class="prob">
+                        <h3>🐌 The Bloat Problem</h3>
+                        <p>Most Canberra businesses use builders like Wix or WordPress that add thousands of lines of hidden, messy code. This makes sites slow and kills your Google ranking.</p>
+                    </div>
+                    <div class="sol">
+                        <h3>⚡ The Hand-Coded Solution</h3>
+                        <p>I write every line of code myself. My sites are 90% lighter, meaning they load instantly. In Canberra's competitive market, speed wins customers.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="prob">
+                        <h3>🤯 The DIY Headache</h3>
+                        <p>You shouldn't spend your weekends at Boomanulla or Ainslie Enclosed worrying about a broken website. Your time is worth more than tech stress.</p>
+                    </div>
+                    <div class="sol">
+                        <h3>🛠️ Fully Managed</h3>
+                        <p>You run your business; I run your site. I handle the hosting, security, and updates. Just text me when you need a change.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="mission">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; text-align: center;">The Mission Log</h2>
+                <p style="text-align: center; max-width: 600px; margin: 20px auto; color: #94a3b8;">I am 14 years old and I believe in earning my way. Supporting Canberra small biz helps me reach my 2026 goals.</p>
+                
+                <div class="quest-grid">
+                    <div class="quest-box gold">
+                        <h3>🏆 Main Quest</h3>
+                        <strong>Tigers FC NPL</strong>
+                        <p style="margin-top: 10px; color: #cbd5e1;">Competing at the NPL level in Canberra is a major commitment. My business helps me cover my registration and travel fees for the upcoming Tigers FC season.</p>
+                    </div>
+                    <div class="quest-box">
+                        <h3>💻 Sidequest</h3>
+                        <strong>The Pro Workstation</strong>
+                        <p style="margin-top: 10px; color: #cbd5e1;">I am currently saving 100% of my build fees to buy a high-end professional development laptop, moving from a student setup to a professional environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 style="text-align:center; font-size: 2.5rem;">Canberra Pricing Options</h2>
+            <div class="price-grid" style="margin-top: 50px;">
+                
+                <div class="p-card">
+                    <div class="p-badge">First 10 Clients</div>
+                    <h3>Launch Partner</h3>
+                    <div class="p-amount">$0<span>/build</span></div>
+                    <p>Free build, just pay hosting.</p>
+                    <ul class="p-list">
+                        <li>Hand-Coded 1-Page Site</li>
+                        <li>$120/yr Hosting & Mgt</li>
+                        <li>Monthly Updates</li>
+                    </ul>
+                    <a href="mailto:dev.linebylinedigital@gmail.com" class="btn" style="width:100%; background:#334155;">Claim Spot</a>
+                </div>
+
+                <div class="p-card featured">
+                    <h3>Standard Biz</h3>
+                    <div class="p-amount">$100<span>/build</span></div>
+                    <p>Professional business setup.</p>
+                    <ul class="p-list">
+                        <li>Multi-Page Custom Site</li>
+                        <li>$120/yr Hosting & Mgt</li>
+                        <li>Priority Support</li>
+                        <li>Google Search Setup</li>
+                    </ul>
+                    <a href="mailto:dev.linebylinedigital@gmail.com" class="btn" style="width:100%;">Start Building</a>
+                </div>
+
+                <div class="p-card">
+                    <h3>Unlimited Pro</h3>
+                    <div class="p-amount">$240<span>/year</span></div>
+                    <p>Total peace of mind.</p>
+                    <ul class="p-list">
+                        <li>Standard Build Included</li>
+                        <li>Zero Hosting Fees</li>
+                        <li>Unlimited Major Changes</li>
+                        <li>Unlimited Minor Changes</li>
+                    </ul>
+                    <a href="mailto:dev.linebylinedigital@gmail.com" class="btn" style="width:100%; background:#334155;">Go Pro</a>
+                </div>
+            </div>
+
+            <div class="on-demand">
+                <h3>Pay-As-You-Go Updates</h3>
+                <div class="rate-grid">
+                    <div class="rate">
+                        <h4>$30</h4>
+                        <strong>Minor Change</strong>
+                        <p>Text swaps, hours updates, or adding a new photo.</p>
+                    </div>
+                    <div class="rate">
+                        <h4>$60</h4>
+                        <strong>Major Change</strong>
+                        <p>Adding 2+ pages or a total color overhaul.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo">LineByLine<span>Digital</span></a>
+            <p style="margin: 20px 0;">Hand-Coded with Precision in Canberra, ACT. Supporting Tigers FC.</p>
+            <p style="font-weight: bold; color: var(--primary);">dev.linebylinedigital@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('menu').classList.remove('active');
+            })
+        })
+    </script>
+</body>
+</html>
